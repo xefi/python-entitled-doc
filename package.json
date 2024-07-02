@@ -1,6 +1,6 @@
 {
-  "name": "docus-starter",
-  "version": "0.1.0",
+  "name": "python-entitled-doc",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "nuxi dev",
