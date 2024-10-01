@@ -1,17 +1,69 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // https://github.com/nuxt-themes/docus
-  extends: ['@nuxt-themes/docus'],
-  devtools: { enabled: true },
+    extends: ['@nuxt/ui-pro'],
 
-  modules: [
-    // Remove it if you don't use Plausible analytics
-    // https://github.com/nuxt-modules/plausible
-    '@nuxtjs/plausible'
-  ],
+    modules: [
+        '@nuxt/content',
+        '@nuxt/eslint',
+        '@nuxt/fonts',
+        '@nuxt/image',
+        '@nuxt/ui',
+        '@nuxthq/studio',
+        'nuxt-og-image'
+    ],
 
-  mdc: {
-    highlight: {
-        langs: ['python']
-    }
-  }
+    hooks: {
+        // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
+        'components:extend': (components) => {
+            const globals = components.filter(c => ['UButton', 'UIcon'].includes(c.pascalName))
+
+            globals.forEach(c => c.global = true)
+        }
+    },
+
+    colorMode: {
+        disableTransition: true
+    },
+
+    nitro: {
+        prerender: {
+            routes: [
+                '/'
+            ],
+            crawlLinks: true
+        }
+    },
+
+    content: {
+        highlight: {
+            langs: ['python']
+        }
+    },
+
+    routeRules: {
+        '/api/search.json': { prerender: true }
+    },
+
+    devtools: {
+        enabled: true
+    },
+
+    typescript: {
+        strict: false
+    },
+
+    future: {
+        compatibilityVersion: 4
+    },
+
+    eslint: {
+        config: {
+            stylistic: {
+                commaDangle: 'never',
+                braceStyle: '1tbs'
+            }
+        }
+    },
+
+    compatibilityDate: '2024-07-11'
 })

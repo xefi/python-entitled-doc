@@ -1,0 +1,32 @@
+title: 'Entitled - A library for authorization enforcement'
+description: A fairly simple library with one goal - make enforcing your authorization logic as easy as possible, letting the developpers focus on their model and logic.
+navigation: false
+hero:
+  title: 'A library for authorization enforcement.'
+  description: 'Helps you organize and enforce authorization so you can focus on the decision-making logic.'
+  orientation: horizontal
+  links:
+    - label: Get started
+      icon: i-heroicons-arrow-right-20-solid
+      trailing: true
+      to: '/getting-started/overview'
+      size: lg
+    - label: Source Code
+      icon: i-simple-icons-github
+      size: lg
+      color: gray
+      to: https://github.com/xefi/python-entitled
+      target: _blank
+  code: |
+    ```bash [Terminal]
+    pip install entitled 
+
+    # with poetry 
+    poetry install entitled
+    ```
+features:
+  title: 'Key features'
+  items:
+    - title: 'Model-agnostic'
+      icon: 'i-mdi-cable-data'
+      description: 'RBAC, ABAC, ACL... you choose the model, Entitled enforces it.'
