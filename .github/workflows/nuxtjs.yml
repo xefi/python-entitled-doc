@@ -3,7 +3,7 @@ name: Deploy Nuxt site to Pages
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
   workflow_dispatch:
 
@@ -52,7 +52,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
         env:
-          NUXT_PUBLIC_GTAG_ID: ${{ secrets.NUXT_PUBLIC_GTAG_ID }}
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
           NUXT_PUBLIC_SITE_URL: ${{ secrets.NUXT_PUBLIC_SITE_URL }}
           NITRO_PRESET: github-pages
