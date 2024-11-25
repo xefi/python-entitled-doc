@@ -11,6 +11,7 @@ const { header } = useAppConfig()
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
+        Entitled
       </template>
       <template v-else>
         Entitled
