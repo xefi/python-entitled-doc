@@ -1,6 +1,6 @@
 export default defineAppConfig({
     ui: {
-        primary: 'green',
+        primary: 'red',
         gray: 'slate',
         footer: {
             bottom: {
@@ -14,9 +14,9 @@ export default defineAppConfig({
     },
     header: {
         logo: {
-            alt: '',
-            light: '',
-            dark: ''
+            alt: 'XEFI Logo',
+            light: '/xefi-light.svg',
+            dark: '/xefi-dark.svg'
         },
         search: true,
         colorMode: true,
@@ -28,7 +28,7 @@ export default defineAppConfig({
         }]
     },
     footer: {
-        credits: 'Copyright © 2023',
+        credits: 'Copyright © ' + (new Date().getFullYear()),
         colorMode: false,
         links: [{
             'icon': 'i-simple-icons-github',
@@ -38,5 +38,16 @@ export default defineAppConfig({
         }]
     },
     toc: {
+        title: 'Table of Contents',
+        bottom: {
+            title: 'Community',
+            edit: 'https://github.com/xefi/python-entitled-docs/edit/main/content',
+            links: [{
+                icon: 'i-heroicons-star',
+                label: 'Star on GitHub',
+                to: 'https://github.com/xefi/python-entitled',
+                target: '_blank'
+            }]
+        }
     }
 })

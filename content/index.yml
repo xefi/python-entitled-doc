@@ -30,3 +30,49 @@ features:
     - title: 'Model-agnostic'
       icon: 'i-mdi-cable-data'
       description: 'RBAC, ABAC, ACL... you choose the model, Entitled enforces it.'
+    - title: 'Easy organization'
+      icon: 'i-mdi-cable-data'
+      description: 'Policies and Rules neatly organize your decision logic.'
+    - title: 'Single decision point'
+      icon: 'i-mdi-cable-data'
+      description: 'A single entrypoint for your authorization decisions.'
+basic_usages:
+  - title: 'Define your resource and actors, on your terms.'
+    code: |
+      ```python
+      #resources.py
+
+      class User:
+        id: int
+      
+      class Post:
+        id: int
+        owner: User
+      ```
+  - title: 'Create a policy for your resource.'
+    code: |
+      ```python
+      # policies.py
+
+      import entitled
+
+      post_policy = entitled.Policy[Post]()
+      ```
+  - title: 'Rules encapsulate your logic.'
+    code: |
+      ```python
+      # policies.py
+      
+      @post_policy.rule("edit")
+      def can_edit_post(actor: User, resource: Post, context) -> bool:
+          return resource.owner == actor
+      ```
+  - title: 'Enforce your policies.'
+    code: |
+      ```python
+      client = entitled.Client()
+      client.register(post_policy)
+
+      if client.allows("edit", user, post):
+          # your business logic
+      ```

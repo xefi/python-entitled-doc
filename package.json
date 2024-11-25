@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-ui-pro-template-docs",
+  "name": "python-entitled-doc",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
