@@ -1,15 +1,15 @@
-title: 'Entitled - A library for authorization enforcement'
+title: "Entitled - A library for authorization enforcement"
 description: A fairly simple library with one goal - make enforcing your authorization logic as easy as possible, letting the developpers focus on their model and logic.
 navigation: false
 hero:
-  title: 'A library for authorization enforcement.'
-  description: 'Helps you organize and enforce authorization so you can focus on the decision-making logic.'
+  title: "A library for authorization enforcement."
+  description: "Helps you organize and enforce authorization so you can focus on the decision-making logic."
   orientation: horizontal
   links:
     - label: Get started
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: '/getting-started/overview'
+      to: "/getting-started/overview"
       size: lg
     - label: Source Code
       icon: i-simple-icons-github
@@ -25,31 +25,31 @@ hero:
     poetry install entitled
     ```
 features:
-  title: 'Key features'
+  title: "Key features"
   items:
-    - title: 'Model-agnostic'
-      icon: 'i-mdi-cable-data'
-      description: 'RBAC, ABAC, ACL... you choose the model, Entitled enforces it.'
-    - title: 'Easy organization'
-      icon: 'i-mdi-cable-data'
-      description: 'Policies and Rules neatly organize your decision logic.'
-    - title: 'Single decision point'
-      icon: 'i-mdi-cable-data'
-      description: 'A single entrypoint for your authorization decisions.'
+    - title: "Model-agnostic"
+      icon: "i-mdi-cable-data"
+      description: "RBAC, ABAC, ACL... you choose the model, Entitled enforces it."
+    - title: "Easy organization"
+      icon: "i-mdi-cable-data"
+      description: "Policies and Rules neatly organize your decision logic."
+    - title: "Single decision point"
+      icon: "i-mdi-cable-data"
+      description: "A single entrypoint for your authorization decisions."
 basic_usages:
-  - title: 'Define your resource and actors, on your terms.'
+  - title: "Define your resource and actors, on your terms."
     code: |
       ```python
       #resources.py
 
       class User:
         id: int
-      
+
       class Post:
         id: int
         owner: User
       ```
-  - title: 'Create a policy for your resource.'
+  - title: "Create a policy for your resource."
     code: |
       ```python
       # policies.py
@@ -58,21 +58,21 @@ basic_usages:
 
       post_policy = entitled.Policy[Post]()
       ```
-  - title: 'Rules encapsulate your logic.'
+  - title: "Rules encapsulate your logic."
     code: |
       ```python
       # policies.py
-      
-      @post_policy.rule("edit")
-      def can_edit_post(actor: User, resource: Post, context) -> bool:
+
+      @post_policy.rule
+      async def can_edit_post(actor: User, resource: Post) -> bool:
           return resource.owner == actor
       ```
-  - title: 'Enforce your policies.'
+  - title: "Enforce your policies."
     code: |
       ```python
       client = entitled.Client()
       client.register(post_policy)
 
-      if client.allows("edit", user, post):
+      if await client.allows("edit", user, post):
           # your business logic
       ```
